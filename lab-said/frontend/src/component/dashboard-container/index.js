@@ -10,7 +10,7 @@ class DashboardContainer extends React.Component {
   render() {
     return (
       <div>
-        <h2>I are Dashboard</h2>
+        <h2>You are at the Dashboard</h2>
       </div>
     );
   }
