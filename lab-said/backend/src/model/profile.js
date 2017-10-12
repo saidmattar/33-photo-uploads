@@ -32,6 +32,7 @@ Profile.validateReqFile = function (req) {
 };
 
 Profile.createProfileWithPhoto = function(req){
+  console.log('CPWP req =', req);
   return Profile.validateReqFile(req)
     .then((file) => {
       return util.s3UploadMulterFileAndClean(file)

@@ -31,6 +31,8 @@ export const basicAuth = (req, res, next) => {
 };
 
 export const bearerAuth = (req, res, next) => {
+  console.log('hit break');
+  console.log('bAuth: ', req.headers);
   let {authorization} = req.headers;
   if(!authorization)
     return next(createError(400, 'AUTH ERROR: no authorization header'));

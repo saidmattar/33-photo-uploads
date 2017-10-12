@@ -22,11 +22,14 @@ export const profileFetchRequest = () => (dispatch, getState) => {
 
 export const profileCreateRequest = profile => (dispatch, getState) => {
   let {auth} = getState();
+  console.log('PPPPPROFILEEE', profile);
+  console.log('AUUUUUUUUUTTTTTHHHHH', auth);
   return superagent.post(`${__API_URL__}/profiles`)
   .set('Authorization', `Bearer ${auth}`)
   .field('bio', profile.bio)
   .attach('avatar', profile.avatar)
   .then(res => {
+    console.log('res* = ', res);
     localStorage.userId = res.body._id;
     dispatch(profileCreate(res.body));
     return res;
