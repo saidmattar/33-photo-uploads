@@ -3,10 +3,11 @@ import {connect} from 'react-redux';
 import * as utils from '../../lib/utils';
 import ProfileForm from '../profile-form';
 import {profileFetchRequest, profileCreateRequest} from '../../action/profile-actions';
+
 class SettingsContainer extends React.Component {
-  // componentWillMount() {
-  //   this.props.profileFetch();
-  // }
+  componentWillMount() {
+    this.props.profileFetch();
+  }
 
   render() {
     return (
@@ -19,6 +20,10 @@ class SettingsContainer extends React.Component {
               onComplete={this.props.profileCreate}/>
           </div>
         )}
+
+        {utils.renderIf(this.props.auth && this.props.profile
+        )}
+
       </div>
     );
   }
