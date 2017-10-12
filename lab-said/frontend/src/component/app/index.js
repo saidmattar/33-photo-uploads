@@ -4,20 +4,27 @@ import {connect} from 'react-redux';
 import * as utils from '../../lib/utils';
 import {tokenSet} from '../../action/auth-actions';
 import LandingContainer from '../landing-container';
-import {BrowserRouter, Route} from 'react-router-dom';
 import SettingsContainer from '../settings-container';
 import DashboardContainer from '../dashboard-container';
+import {BrowserRouter, Route, Redirect} from 'react-router-dom';
 
 class App extends React.Component {
+  componentDidMount() {
+    let token = utils.cookieFetch('X-Sluggram-Token');
+    if(token) this.props.tokenSet(token);
+  }
+
   render() {
     return (
       <div className="application">
         <BrowserRouter>
           <div>
-            <Navbar />
-            <Route path="/settings" component={SettingsContainer}/>
-            <Route path="/welcome/:auth" component={LandingContainer}/>
-            <Route exact path="/dashboard" component={DashboardContainer}/>
+          <Navbar />
+
+         <Route path="/welcome/:auth" component={LandingContainer}/>
+         <Route exact path="/settings" component={() => this.props.auth ? <SettingsContainer/> : <Redirect to="/" />}/>
+         <Route exact path="/" component={() => this.props.auth ? <DashboardContainer/> : <Redirect to="/" />}/>
+
           </div>
         </BrowserRouter>
       </div>
@@ -26,6 +33,7 @@ class App extends React.Component {
 }
 
 let mapStateToProps = state => ({
+  auth: state.auth,
   profile: state.profile,
 });
 

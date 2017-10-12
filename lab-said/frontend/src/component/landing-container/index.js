@@ -15,7 +15,7 @@ class LandingContainer extends React.Component {
 
     return (
       <div>
-        <h2>hello world from landing!</h2>
+        <h2>hello from landing!</h2>
         <AuthForm
           auth={params.auth}
           redirect={redirect}
