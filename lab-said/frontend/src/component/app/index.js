@@ -19,12 +19,12 @@ class App extends React.Component {
       <div className="application">
         <BrowserRouter>
           <div>
-          <Navbar />
-
-         <Route path="/welcome/:auth" component={LandingContainer}/>
-         <Route exact path="/settings" component={() => this.props.auth ? <SettingsContainer/> : <Redirect to="/" />}/>
-         <Route exact path="/" component={() => this.props.auth ? <DashboardContainer/> : <Redirect to="/" />}/>
-
+            <Navbar />
+            {/* <Route path="/" component={HomeContainer}/> */}
+            <Route path="/welcome/:auth" component={LandingContainer}/>
+            <Route exact path="/settings" component={() => this.props.auth ? <SettingsContainer/> : <Redirect to="/" />}/>
+            <Route exact path="/" component={() => this.props.auth ? <DashboardContainer/> : <Redirect to="/" />}/>
+            {/* <FooterContainer /> */}
           </div>
         </BrowserRouter>
       </div>

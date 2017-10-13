@@ -1,8 +1,7 @@
 import React from 'react';
+import * as utils from '../../lib/utils';
 import {connect} from 'react-redux';
 import PhotoForm from '../photo-form';
-import * as utils from '../../lib/utils';
-import FontIcon from 'material-ui/FontIcon';
 import {photoUpdateRequest, photoDeleteRequest} from '../../action/photo-actions';
 
 class PhotoItem extends React.Component {
@@ -11,6 +10,7 @@ class PhotoItem extends React.Component {
     this.state = {
       editing: false,
     };
+
     this.toggleEdit = this.toggleEdit.bind(this);
   }
 
@@ -23,9 +23,8 @@ class PhotoItem extends React.Component {
 
     return (
       <div className="photo-item">
-        <i onClick={() => this.props.photoDelete(photo)}>X</i>
+        <i onClick={() => this.props.photoDelete(photo)}>X</i><br/>
         <i onClick={this.toggleEdit}>Edit</i>
-
         {utils.renderIf(!this.state.editing,
           <div>
             <img src={photo.url} style={{'width': '25%'}}/>
@@ -46,6 +45,7 @@ class PhotoItem extends React.Component {
 }
 
 let mapStateToProps = state => ({});
+
 let mapDispatchToProps = dispatch => ({
   photoUpdate: photo => dispatch(photoUpdateRequest(photo)),
   photoDelete: photo => dispatch(photoDeleteRequest(photo)),

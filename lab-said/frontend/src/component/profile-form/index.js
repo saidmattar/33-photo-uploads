@@ -21,8 +21,8 @@ class ProfileForm extends React.Component {
       this.setState({avatar});
 
       utils.photoToDataUrl(avatar)
-      .then(preview => this.setState({preview}))
-      .catch(console.error);
+        .then(preview => this.setState({preview}))
+        .catch(console.error);
     }
   }
 

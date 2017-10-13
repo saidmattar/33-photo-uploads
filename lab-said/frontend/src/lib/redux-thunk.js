@@ -1,5 +1,6 @@
 export default store => next => action => {
-  typeof action === 'function'
-  ? action(store.dispatch, store.getState)
-  : next(action);
+  console.log('hello from thunk middleware!', action);
+  return typeof action === 'function'
+    ? action(store.dispatch, store.getState)
+    : next(action);
 };

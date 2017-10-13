@@ -6,8 +6,9 @@ import {profileFetchRequest, profileCreateRequest} from '../../action/profile-ac
 
 class SettingsContainer extends React.Component {
   componentWillMount() {
-    this.props.profileFetch();
+    if (!this.props.profile) this.props.profileFetch();
   }
+
 
   render() {
     return (
@@ -20,10 +21,6 @@ class SettingsContainer extends React.Component {
               onComplete={this.props.profileCreate}/>
           </div>
         )}
-
-        {utils.renderIf(this.props.auth && this.props.profile
-        )}
-
       </div>
     );
   }

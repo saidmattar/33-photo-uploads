@@ -10,7 +10,7 @@ class Navbar extends React.Component {
         {this.props.auth && this.props.profile ?
           <div className="profile-header">
             <h2>Welcome {this.props.profile.username}</h2>
-            <img src={this.props.profile.avatar} style={{'width': '15%', 'border': '1px solid grey'}}/>
+            <img src={this.props.profile.avatar} style={{width: '10%', border: '1px solid grey'}}/>
           </div>
           :
           undefined
@@ -20,7 +20,6 @@ class Navbar extends React.Component {
             {this.props.auth ?
               <div>
                 <li onClick={this.props.tokenDelete}><Link to="/">Logout</Link></li>
-                <li><Link to="/dashboard">Dashboard</Link></li>
                 <li><Link to="/settings">Settings</Link></li>
               </div>
               :

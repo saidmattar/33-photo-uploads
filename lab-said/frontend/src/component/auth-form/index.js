@@ -34,11 +34,12 @@ class AuthForm extends React.Component {
       password: this.state.password,
       email: this.state.email,
     })
-    .then(() => this.props.redirect('/'))
-    .catch(error => {
-      console.error(error);
-      this.setState({error});
-    });
+    
+      .then(() => this.props.redirect('/'))
+      .catch(error => {
+        console.error(error);
+        this.setState({error});
+      });
   }
 
   render() {
