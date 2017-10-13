@@ -56,7 +56,7 @@ export const s3UploadMulterFileAndClean = (data) => {
 
 export const pagerCreate = (model, populate='') => (req, query={}) => {
   let offset = (Number(req.query.page) - 1) || 0;
-  let itemLimit = 100;
+  let itemLimit = 5;
   let route = `${process.env.API_URL}/${model.modelName}s?page=`;
   return model.count()
     .then(count => {
