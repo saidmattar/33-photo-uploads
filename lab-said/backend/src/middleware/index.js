@@ -10,24 +10,26 @@ import fourOhFour from './four-oh-four.js';
 import routerPhoto from './router-photo.js';
 import errorHandler from './error-handler.js';
 import routerProfile from './router-profile.js';
+import requestReporter from './request-reporter.js';
 import bindResponseMethods from './bind-response-methods.js';
 
 // INTERFACE
 export default new Router()
-  .use([
+.use([
   // GLOBAL MIDDLEWARE
-    cors({
-      origin: process.env.CORS_ORIGINS.split(' '),
-      credentials: true,
-    }),
-    morgan('dev'),
-    cookieParser(),
-    bindResponseMethods,
-    // ROUTERS
-    routerAuth,
-    routerPhoto,
-    routerProfile,
-    // ERROR HANDLERS
-    fourOhFour,
-    errorHandler,
-  ]);
+  cors({
+    origin: process.env.CORS_ORIGINS.split(' '),
+    credentials: true,
+  }),
+  morgan('dev'),
+  cookieParser(),
+  requestReporter,
+  bindResponseMethods,
+  // ROUTERS
+  routerAuth,
+  routerPhoto,
+  routerProfile,
+  // ERROR HANDLERS
+  fourOhFour,
+  errorHandler,
+]);

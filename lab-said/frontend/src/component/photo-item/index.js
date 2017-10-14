@@ -23,7 +23,7 @@ class PhotoItem extends React.Component {
 
     return (
       <div className="photo-item">
-        <i onClick={() => this.props.photoDelete(photo)}>X</i><br/>
+        <i onClick={() => this.props.photoDelete(photo)}>X</i>
         <i onClick={this.toggleEdit}>Edit</i>
         {utils.renderIf(!this.state.editing,
           <div>

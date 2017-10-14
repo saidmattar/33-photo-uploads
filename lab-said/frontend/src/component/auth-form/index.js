@@ -1,5 +1,6 @@
 import React from 'react';
 import * as utils from '../../lib/utils';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class AuthForm extends React.Component {
   constructor(props) {
@@ -34,11 +35,12 @@ class AuthForm extends React.Component {
       password: this.state.password,
       email: this.state.email,
     })
-    .then(() => this.props.redirect('/dashboard'))
-    .catch(error => {
-      console.error(error);
-      this.setState({error});
-    });
+    // .then(() => this.setState({username: '', email: '', password: ''})) // No longer necessary given the redirect to a different view
+      .then(() => this.props.redirect('/'))
+      .catch(error => {
+        console.error(error);
+        this.setState({error});
+      });
   }
 
   render() {
@@ -82,7 +84,7 @@ class AuthForm extends React.Component {
           value={this.state.password}
           onChange={this.handleChange}/>
 
-        <button type="submit">{this.props.auth}</button>
+        <RaisedButton label={this.props.auth} type="submit" primary={true} />
       </form>
     );
   }
