@@ -4,10 +4,10 @@ import * as utils from '../../lib/utils';
 import ProfileForm from '../profile-form';
 import {profileFetchRequest, profileCreateRequest} from '../../action/profile-actions';
 
+
 class SettingsContainer extends React.Component {
   componentWillMount() {
-    // if the user account has a profile, set it as this.props.profile
-    if (!this.props.profile) this.props.profileFetch();
+    if(!this.props.profile) this.props.profileFetch();
   }
 
   render() {
@@ -20,6 +20,9 @@ class SettingsContainer extends React.Component {
               buttonText="create"
               onComplete={this.props.profileCreate}/>
           </div>
+        )}
+
+        {utils.renderIf(this.props.auth && this.props.profile
         )}
       </div>
     );
